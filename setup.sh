@@ -58,8 +58,7 @@ function extract() {
 
 
 function work_dir_has_setup_script() {
-    printf "%s" "${BASH_SOURCE[0]}" | grep "setup.sh" &> /dev/null
-    ok=$?
+    printf "%s" "${BASH_SOURCE[0]}" | grep "setup.sh"
     return $?
 } 
 
@@ -100,16 +99,15 @@ function main() {
     cd "$(dirname "${BASH_SOURCE[0]}")" \
         || exit 1
 
+    pwd
+
     # Download dotfiles if we didn't run this script directly
-    if [ ! work_dir_has_setup_script ]; then
-        echo no setup script
-        download repo \
+    if ! work_dir_has_setup_script; then
+        echo "no setup script"
+        download_repo \
             && cd "$repo_path"
-    else
-        echo found setup script
+        echo "got here"
     fi
-
-
 }
 
 
