@@ -102,7 +102,7 @@ function main() {
     pwd
 
     # Download dotfiles if we didn't run this script directly
-    if [ ! work_dir_has_setup_script ]; then
+    if ! work_dir_has_setup_script; then
         echo no setup script
         echo downloading repo
         download repo \
