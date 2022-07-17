@@ -14,7 +14,7 @@ A macOS new machine setup script
 Run this command to bootstrap the setup.
 
 ```
-bash -c "$(curl -LsS https://raw.github.com/jaredsampson/setup/main/setup.sh)"
+bash -c "$(curl -LsS https://raw.githubusercontent.com/jaredsampson/setup/main/setup.sh)"
 ```
 
 The setup script will 
