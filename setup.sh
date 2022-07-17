@@ -58,8 +58,7 @@ function extract() {
 
 
 function work_dir_has_setup_script() {
-    printf "%s" "${BASH_SOURCE[0]}" | grep "setup.sh" &> /dev/null
-    ok=$?
+    printf "%s" "${BASH_SOURCE[0]}" | grep "setup.sh"
     return $?
 } 
 
@@ -124,8 +123,6 @@ function main() {
     else
         echo found setup script
     fi
-
-
 }
 
 
