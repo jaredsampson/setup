@@ -99,13 +99,12 @@ function main() {
     cd "$(dirname "${BASH_SOURCE[0]}")" \
         || exit 1
 
-    pwd
+    echo "Working in $(pwd)..."
 
     # Download dotfiles if we didn't run this script directly
     if ! work_dir_has_setup_script; then
-        echo no setup script
-        echo downloading repo
-        download repo \
+        echo "no setup script found"
+        download_repo \
             && cd "$repo_path"
         echo
         echo install Xcode command line tools
@@ -119,7 +118,7 @@ function main() {
         echo configure macos
         echo
         echo configure applications
-        
+
     else
         echo found setup script
     fi
