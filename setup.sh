@@ -28,6 +28,26 @@ function print_step() {
 
 # Bootstrap-specific
 
+function xcode_command_line_tools_are_installed() {
+    xcode-select --print-path &> /dev/null
+}
+
+
+function install_xcode_command_line_tools() {
+    print_step "Installing XCode Command Line Tools..."
+    xcode-select --install
+}
+
+
+function require_xcode_command_line_tools() {
+    if xcode_command_line_tools_are_installed; then
+        print_step "XCode Command Line Tools are installed."
+    else
+        install_xcode_command_line_tools
+    fi
+}
+
+
 # Modified from alrra/dotfiles
 function download() {
     local url="$1"
@@ -88,7 +108,18 @@ function download_repo() {
         return 1
     fi
 }
-    
+
+
+function bootstrap() {
+    require_xcode_command_line_tools
+    download_repo && cd "$repo_path"
+    echo TBD install dotfiles
+    echo TBD install application configure macos
+    echo TBD configure applicationss
+    echo TBD configure macos
+    echo TBD configure applications
+}
+
 
 ############################################################
 
@@ -100,31 +131,16 @@ function main() {
     cd "$(dirname "${BASH_SOURCE[0]}")" \
         || exit 1
 
-    echo "Working in $(pwd)..."
+    print_step "Starting in $(pwd)..."
 
-    # Download dotfiles if we didn't run this script directly
+    # Download the repo if we're not running from a local copy
     if ! work_dir_has_setup_script; then
-        echo "no setup script found"
-        download_repo \
-            && cd "$repo_path"
-        echo
-        echo install Xcode command line tools
-        echo
-        echo install dotfiles
-        echo
-        echo install application configure macos
-        echo
-        echo configure applicationss
-        echo
-        echo configure macos
-        echo
-        echo configure applications
-
+        print_step "No setup script found...starting bootstrap."
+        bootstrap
     else
-        echo found setup script
+        print_step "found setup script"
     fi
 }
 
 
 main "$@"
-
