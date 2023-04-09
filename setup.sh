@@ -19,7 +19,7 @@ repo_path="$HOME/.setup"
 # Utils
 
 function print_step() {
-    echo -e "\n - $1"
+    echo -e "$1"
 }
 
 
@@ -44,6 +44,7 @@ function download() {
     #             &> /dev/null
     #     return $?
     fi
+
     return 1
 }
 
