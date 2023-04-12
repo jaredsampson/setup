@@ -36,6 +36,9 @@ function xcode_command_line_tools_are_installed() {
 function install_xcode_command_line_tools() {
     print_step "Installing XCode Command Line Tools..."
     xcode-select --install
+    until xcode_command_line_tools_are_installed; do
+        sleep 5
+    done
 }
 
 
@@ -44,6 +47,7 @@ function require_xcode_command_line_tools() {
         print_step "XCode Command Line Tools are installed."
     else
         install_xcode_command_line_tools
+        wait_for_xcode_command_line_tools
     fi
 }
 
