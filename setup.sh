@@ -5,7 +5,8 @@
 ############################################################
 
 # Github
-github_repo="jaredsampson/setup"
+github_user="jaredsampson"
+github_repo="${github_user}/setup"
 origin="git@github.com:${github_repo}.git"
 tarball_url="https://github.com/${github_repo}/tarball/main"
 
@@ -23,6 +24,19 @@ function print_step() {
 }
 
 
+ask_for_sudo() {
+    # Ask for the administrator password upfront.
+    sudo -v &> /dev/null
+
+    # Update existing `sudo` time stamp until this script has finished.
+    # https://gist.github.com/cowboy/3118588
+    while true; do
+        sudo -n true
+        sleep 60
+        kill -0 "$$" || exit
+    done &> /dev/null &
+}
+
 
 
 ############################################################
@@ -37,6 +51,9 @@ function xcode_command_line_tools_are_installed() {
 function install_xcode_command_line_tools() {
     print_step "Installing XCode Command Line Tools..."
     xcode-select --install
+    until xcode_command_line_tools_are_installed; do
+        sleep 5
+    done
 }
 
 
@@ -45,6 +62,7 @@ function require_xcode_command_line_tools() {
         print_step "XCode Command Line Tools are installed."
     else
         install_xcode_command_line_tools
+        wait_for_xcode_command_line_tools
     fi
 }
 
@@ -113,28 +131,44 @@ function download_repo() {
 }
 
 
-function bootstrap() {
-    require_xcode_command_line_tools
-    download_repo && cd "$repo_path"
-    echo TBD install dotfiles
-    echo TBD install application configure macos
-    echo TBD configure applicationss
-    echo TBD configure macos
-    echo TBD configure applications
+configure_github_ssh_key() {
+    # Don't overwrite existing key
+    if [ -f "$HOME/.ssh/id_${github_user}@github" ]; then
+        return 0
+    else
+        git clone https://github.com/dolmen/github-keygen.git > /dev/null
+        cd github-keygen
+        ./github-keygen "$github_user"
+        cd ..
+        rm -Rf github-keygen
+    fi
 }
 
 
+function bootstrap() {
+    require_xcode_command_line_tools
+    configure_github_ssh_key
+    download_repo && cd "$repo_path"
+    ./install_dotfiles.sh
+    echo TBD configure macos
+    echo TBD install applications
+    echo TBD configure applicationss
+}
+
+
+
+############################################################
+# Main workflow
 ############################################################
 
-# Main workflow
-
 function main() {
-    
     # Work in the repo directory
     cd "$(dirname "${BASH_SOURCE[0]}")" \
         || exit 1
-
     print_step "Starting in $(pwd)..."
+
+    # Get sudo permission at the start.
+    ask_for_sudo
 
     # Download the repo if we're not running from a local copy
     if ! work_dir_has_setup_script; then
