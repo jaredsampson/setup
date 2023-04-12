@@ -132,11 +132,10 @@ function download_repo() {
 function bootstrap() {
     require_xcode_command_line_tools
     download_repo && cd "$repo_path"
-    echo TBD install dotfiles
-    echo TBD install application configure macos
-    echo TBD configure applicationss
+    ./install_dotfiles.sh
     echo TBD configure macos
-    echo TBD configure applications
+    echo TBD install applications
+    echo TBD configure applicationss
 }
 
 
