@@ -24,6 +24,19 @@ function print_step() {
 }
 
 
+ask_for_sudo() {
+    # Ask for the administrator password upfront.
+    sudo -v &> /dev/null
+
+    # Update existing `sudo` time stamp until this script has finished.
+    # https://gist.github.com/cowboy/3118588
+    while true; do
+        sudo -n true
+        sleep 60
+        kill -0 "$$" || exit
+    done &> /dev/null &
+}
+
 
 
 ############################################################
@@ -137,6 +150,9 @@ function main() {
     cd "$(dirname "${BASH_SOURCE[0]}")" \
         || exit 1
     print_step "Starting in $(pwd)..."
+
+    # Get sudo permission at the start.
+    ask_for_sudo
 
     # Download the repo if we're not running from a local copy
     if ! work_dir_has_setup_script; then
