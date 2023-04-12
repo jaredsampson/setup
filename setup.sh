@@ -5,7 +5,8 @@
 # Config
 
 # Github
-github_repo="jaredsampson/setup"
+github_user="jaredsampson"
+github_repo="${github_user}/setup"
 origin="git@github.com:${github_repo}.git"
 tarball_url="https://github.com/${github_repo}/tarball/main"
 
@@ -129,8 +130,23 @@ function download_repo() {
 }
 
 
+configure_github_ssh_key() {
+    # Don't overwrite existing key
+    if [ -f "$HOME/.ssh/id_${github_user}@github" ]; then
+        return 0
+    else
+        git clone https://github.com/dolmen/github-keygen.git > /dev/null
+        cd github-keygen
+        ./github-keygen "$github_user"
+        cd ..
+        rm -Rf github-keygen
+    fi
+}
+
+
 function bootstrap() {
     require_xcode_command_line_tools
+    configure_github_ssh_key
     download_repo && cd "$repo_path"
     ./install_dotfiles.sh
     echo TBD configure macos
