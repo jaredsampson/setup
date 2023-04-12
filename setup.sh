@@ -15,8 +15,9 @@ repo_path="$HOME/.setup"
 
 
 ############################################################
-
 # Utils
+############################################################
+
 
 function print_step() {
     echo -e "$1"
@@ -24,9 +25,10 @@ function print_step() {
 
 
 
-############################################################
 
+############################################################
 # Bootstrap-specific
+############################################################
 
 function xcode_command_line_tools_are_installed() {
     xcode-select --print-path &> /dev/null
@@ -125,16 +127,15 @@ function bootstrap() {
 }
 
 
+
+############################################################
+# Main workflow
 ############################################################
 
-# Main workflow
-
 function main() {
-    
     # Work in the repo directory
     cd "$(dirname "${BASH_SOURCE[0]}")" \
         || exit 1
-
     print_step "Starting in $(pwd)..."
 
     # Download the repo if we're not running from a local copy
