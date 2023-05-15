@@ -17,7 +17,7 @@ Run this command to bootstrap the setup.
 bash -c "$(curl -LsS https://raw.githubusercontent.com/jaredsampson/setup/main/setup.sh)"
 ```
 
-The setup script will 
+The setup script will (eventually (hopefully)):
 
 1. Install the Xcode command line tools.
 2. Clone this repository into `~/.setup`.
