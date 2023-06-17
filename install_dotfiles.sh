@@ -15,7 +15,7 @@ if [ -d "$dotfiles_dir" ]; then
     echo "Using existing dotfiles directory at $dotfiles_dir"
 else
     # Get the repo
-    git clone --bare "$dotfiles_origin" "$HOME/$dotfiles_dir"
+    git clone --bare "$dotfiles_origin" "$dotfiles_dir"
 
     # TODO add error handling here
     # Checkout the dotfiles and make a backup if there were conflicts
