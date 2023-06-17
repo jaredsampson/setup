@@ -4,7 +4,7 @@
 # except using `dotfiles` instead of `config`.
 
 declare -r dotfiles_repo="jaredsampson/dotfiles"
-declare -r dotfiles_origin="git@github.com:${dotfiles_repo}.git"
+declare -r dotfiles_origin="git@jaredsampson.github.com:${dotfiles_repo}.git"
 declare -r dotfiles_dir="$HOME/.dotfiles"
 
 # Allow the following alias to work within this script
