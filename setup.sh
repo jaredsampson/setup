@@ -165,8 +165,7 @@ function bootstrap() {
 
 function setup() {
     ./install_dotfiles.sh
-    # install homebrew
-    which brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    ./homebrew.sh
     echo TBD configure macos
     echo TBD install applications
     echo TBD configure applicationss
