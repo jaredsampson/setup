@@ -99,7 +99,7 @@ function extract() {
 }
 
 
-function work_dir_has_setup_script() {
+function bash_source_is_local_setup_script() {
     printf "%s" "${BASH_SOURCE[0]}" | grep "setup.sh"
     return $?
 } 
@@ -171,7 +171,7 @@ function main() {
     ask_for_sudo
 
     # Download the repo if we're not running from a local copy
-    if ! work_dir_has_setup_script; then
+    if ! bash_source_is_local_setup_script; then
         print_step "No setup script found...starting bootstrap."
         bootstrap
     else
