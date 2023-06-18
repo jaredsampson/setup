@@ -132,13 +132,13 @@ function download_repo() {
 }
 
 
-github_ssh_access_works() {
+function github_ssh_access_works() {
     ssh -T "$github_base" 2>&1 | grep -q "$github_user"
     return $?
 }
 
 
-configure_github_ssh_key() {
+function configure_github_ssh_key() {
     print_step "Checking GitHub SSH key"
     # Don't overwrite existing key
     if [ -f "$HOME/.ssh/id_${github_user}@github" ]; then
@@ -160,8 +160,13 @@ function bootstrap() {
     require_xcode_command_line_tools
     configure_github_ssh_key
     git clone "$origin" "$repo_path" && cd "$repo_path"
-    # download_repo && cd "$repo_path"
+}
+
+
+function setup() {
     ./install_dotfiles.sh
+    # install homebrew
+    which brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     echo TBD configure macos
     echo TBD install applications
     echo TBD configure applicationss
@@ -184,11 +189,10 @@ function main() {
 
     # Download the repo if we're not running from a local copy
     if ! bash_source_is_local_setup_script; then
-        print_step "No setup script found...starting bootstrap."
+        print_step "No local setup script found...starting bootstrap."
         bootstrap
-    else
-        print_step "found setup script"
     fi
+    setup
 }
 
 
