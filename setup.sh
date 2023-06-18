@@ -7,7 +7,8 @@
 # Github
 github_user="jaredsampson"
 github_repo="${github_user}/setup"
-origin="git@${github_user}.github.com:${github_repo}.git"
+github_base="git@${github_user}.github.com"
+origin="${github_base}:${github_repo}.git"
 tarball_url="https://github.com/${github_repo}/tarball/main"
 
 # Local
@@ -131,17 +132,27 @@ function download_repo() {
 }
 
 
+github_ssh_access_works() {
+    ssh -T "$github_base" 2>&1 | grep -q "$github_user"
+    return $?
+}
+
+
 configure_github_ssh_key() {
+    print_step "Checking GitHub SSH key"
     # Don't overwrite existing key
     if [ -f "$HOME/.ssh/id_${github_user}@github" ]; then
+        print_step "  ok"
         return 0
     else
+        print_step "  generating SSH keys"
         git clone https://github.com/dolmen/github-keygen.git > /dev/null
         cd github-keygen
         ./github-keygen "$github_user"
         cd ..
         rm -Rf github-keygen
     fi
+    
 }
 
 
