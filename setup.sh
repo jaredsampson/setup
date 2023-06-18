@@ -7,10 +7,10 @@
 # Github
 github_user="jaredsampson"
 github_repo="${github_user}/setup"
-origin="git@github.com:${github_repo}.git"
+origin="git@${github_user}.github.com:${github_repo}.git"
 tarball_url="https://github.com/${github_repo}/tarball/main"
 
-# Local 
+# Local
 repo_path="$HOME/.setup"
 
 
@@ -148,7 +148,8 @@ configure_github_ssh_key() {
 function bootstrap() {
     require_xcode_command_line_tools
     configure_github_ssh_key
-    download_repo && cd "$repo_path"
+    git clone "$origin" "$repo_path" && cd "$repo_path"
+    # download_repo && cd "$repo_path"
     ./install_dotfiles.sh
     echo TBD configure macos
     echo TBD install applications
