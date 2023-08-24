@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-
 homebrew_is_installed() {
     which brew > /dev/null
     return "$?"
@@ -8,8 +7,9 @@ homebrew_is_installed() {
 
 
 install_homebrew() {
+    url="https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh"
     if ! homebrew_is_installed; then
-        printf "\n" | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" &> /dev/null
+        printf "\n" | /bin/bash -c "$(curl -fsSL ${url})"
         #  └─ simulate the ENTER keypress
     fi
 }
