@@ -21,7 +21,9 @@ main() {
     brew update
 
     for profile in base $profiles; do
-        echo $profile
+        # print_step "Installing Brewfile from profile \`$profile\`..."
+        brewfile="profile/$profile/Brewfile"
+        brew bundle install --no-lock --file "$brewfile"
     done
 }
 

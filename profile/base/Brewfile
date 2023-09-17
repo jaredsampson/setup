@@ -1,5 +1,3 @@
-tap "homebrew/brewsci"
-
 cask "1password"
 cask "coconutbattery"
 cask "firefox"
@@ -13,7 +11,6 @@ cask "rstudio"
 cask "setapp"
 cask "sourcetree"
 cask "typinator"
-cask "zoom"
 
 brew "bash"
 brew "curl"
@@ -26,13 +23,13 @@ brew "r"
 brew "rename"
 brew "vim"
 
-mas 1569813296  # 1Password for Safari
-mas 1122008420  # Table Tool
-mas 415139197  # White Noise
-mas 973134470  # Be Focused
-mas 411643860  # DaisyDisk
-mas 402359583  # unDock
-mas 904280696  # Things 3
-mas 403504866  # PCalc
-mas 425264550  # Blackmagic Disk Speed Test
-mas 407963104  # pixelmator classic
+mas "1Password for Safari", id:1569813296
+mas "Table Tool", id: 1122008420
+mas "White Noise", id: 415139197
+mas "Be Focused", id: 973134470
+mas "DaisyDisk", id: 411643860
+mas "unDock", id: 402359583
+mas "Things 3", id: 904280696
+mas "PCalc", id: 403504866
+mas "Blackmagic Disk Speed Test", id: 425264550
+mas "Pixelmator Classic", id: 407963104
