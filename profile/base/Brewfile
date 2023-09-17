@@ -1,0 +1,38 @@
+tap "homebrew/brewsci"
+
+cask "1password"
+cask "coconutbattery"
+cask "firefox"
+cask "google-chrome"
+cask "iterm2"
+cask "monitorcontrol"
+cask "moom"
+cask "mouse-fix"
+cask "nvalt"
+cask "rstudio"
+cask "setapp"
+cask "sourcetree"
+cask "typinator"
+cask "zoom"
+
+brew "bash"
+brew "curl"
+brew "macvim"
+brew "mas"
+brew "node"
+brew "pkg-config"
+brew "python"
+brew "r"
+brew "rename"
+brew "vim"
+
+mas 1569813296  # 1Password for Safari
+mas 1122008420  # Table Tool
+mas 415139197  # White Noise
+mas 973134470  # Be Focused
+mas 411643860  # DaisyDisk
+mas 402359583  # unDock
+mas 904280696  # Things 3
+mas 403504866  # PCalc
+mas 425264550  # Blackmagic Disk Speed Test
+mas 407963104  # pixelmator classic

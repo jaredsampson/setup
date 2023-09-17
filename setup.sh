@@ -182,8 +182,9 @@ function bootstrap() {
 
 
 function setup() {
+    profiles="$@"
     ./install_dotfiles.sh
-    ./homebrew.sh
+    ./homebrew.sh "$profiles"
     echo TBD configure macos
     echo TBD install applications
     echo TBD configure applicationss
@@ -196,6 +197,8 @@ function setup() {
 ############################################################
 
 function main() {
+    profiles="$@"
+
     # Work in the repo directory
     cd "$(dirname "${BASH_SOURCE[0]}")" \
         || exit 1
@@ -209,7 +212,8 @@ function main() {
         print_step "No local setup script found...starting bootstrap."
         bootstrap
     fi
-    setup
+
+    setup "$profiles"
 }
 
 

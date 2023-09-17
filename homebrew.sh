@@ -15,8 +15,14 @@ install_homebrew() {
 }
 
 main() {
+    profiles="$@"
+
     install_homebrew
     brew update
+
+    for profile in base $profiles; do
+        echo $profile
+    done
 }
 
-main
+main "$@"
