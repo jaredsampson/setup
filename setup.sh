@@ -140,19 +140,37 @@ function github_ssh_access_works() {
 
 function configure_github_ssh_key() {
     print_step "Checking GitHub SSH key"
+    private_key="$HOME/.ssh/id_${github_user}@github"
+    public_key="${private_key}.pub"
     # Don't overwrite existing key
-    if [ -f "$HOME/.ssh/id_${github_user}@github" ]; then
-        print_step "  ok"
-        return 0
+    if [[ -f "$private_key" && -f "$public_key" ]]; then
+        print_step "  Using existing GitHub SSH key pair."
     else
-        print_step "  generating SSH keys"
+        print_step "  Generating new GitHub SSH keys..."
         git clone https://github.com/dolmen/github-keygen.git > /dev/null
         cd github-keygen
         ./github-keygen "$github_user"
         cd ..
         rm -Rf github-keygen
     fi
-    
+
+    if github_ssh_access_works; then
+        echo -e "  Successfully authenticated with GitHub!\n"
+        return 0
+    fi
+
+    while ! github_ssh_access_works; do
+        cat $public_key | pbcopy
+        echo
+        echo "The generated SSH key has been copied to the clipboard."
+        echo
+        echo "Please go to https://github.com/settings/keys and add the key,"
+        echo "then come back here to continue setup."
+
+        read -n 1 -s -r -p "Press any key to continue."
+        echo
+    done
+    return 0
 }
 
 
