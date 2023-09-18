@@ -187,7 +187,9 @@ function setup() {
     ./homebrew.sh "$profiles"
     echo TBD configure macos
     echo TBD install applications
-    echo TBD configure applicationss
+
+    print_step "configure applications"
+    apps/configure.sh
 }
 
 
