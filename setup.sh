@@ -189,7 +189,7 @@ function setup() {
     echo TBD install applications
 
     print_step "configure applications"
-    apps/configure.sh
+    apps/main.sh
 }
 
 

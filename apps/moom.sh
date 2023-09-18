@@ -8,6 +8,3 @@ if [[ -f ~/Library/Preferences/com.manytricks.Moom.plist ]]; then
     defaults import com.manytricks.Moom preferences/moom.plist
     open -a Moom
 fi
-
-# iTerm
-defaults import com.googlecode.iterm2.plist preferences/com.googlecode.iterm2.plist
