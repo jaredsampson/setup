@@ -1,7 +1,7 @@
 cask "1password"
 cask "coconutbattery"
 cask "firefox"
-cask "google-chrome"
+# cask "google-chrome"
 cask "iterm2"
 cask "monitorcontrol"
 cask "moom"
