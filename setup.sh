@@ -12,7 +12,7 @@ origin="${github_base}:${github_repo}.git"
 tarball_url="https://github.com/${github_repo}/tarball/main"
 
 # Local
-repo_path="$HOME/.setup"
+repo_path="$HOME/projects/setup"
 
 
 
