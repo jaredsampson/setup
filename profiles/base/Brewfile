@@ -23,6 +23,13 @@ brew "r"
 brew "rename"
 brew "vim"
 
+# R package dependencies
+brew "llvm"
+brew "libgit2"
+brew "harfbuzz"
+brew "fribidi"
+brew "libtiff"
+
 mas "1Password for Safari", id:1569813296
 mas "Table Tool", id: 1122008420
 mas "White Noise", id: 415139197

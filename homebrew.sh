@@ -22,7 +22,7 @@ main() {
 
     for profile in base $profiles; do
         # print_step "Installing Brewfile from profile \`$profile\`..."
-        brewfile="profile/$profile/Brewfile"
+        brewfile="profiles/$profile/Brewfile"
         brew bundle install --no-lock --file "$brewfile"
     done
 }
