@@ -18,12 +18,20 @@ main() {
     profiles="$@"
 
     install_homebrew
-    brew update
+
+    # Apple silicon Macs need the `arch -amd64` prefix
+    brew="brew"
+    if [[ $(uname -p) == "arm" ]]; then
+        brew="arch -arm64 brew"
+    fi
+
+    $brew update
 
     for profile in base $profiles; do
         # print_step "Installing Brewfile from profile \`$profile\`..."
         brewfile="profiles/$profile/Brewfile"
         brew bundle install --no-lock --file "$brewfile"
+        $brew bundle install --no-lock --file "$brewfile"
     done
 }
 
