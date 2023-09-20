@@ -1,3 +1,8 @@
+cask "appgate-sdp-client"
 cask "google-drive"
 cask "google-chat"
 cask "zoom"
+cask "microsoft-teams"
+cask "obsidian"
+cask "transmit"
+
