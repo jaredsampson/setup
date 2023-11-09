@@ -188,6 +188,8 @@ function setup() {
     print_step "setting up homebrew"
     ./homebrew.sh "$profiles"
     print_step "TODO: setting up macos"
+    print_step "setting up hotkeys"
+    ./hotkeys.sh
     print_step "setting up applications"
     apps/main.sh
 }
