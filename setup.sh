@@ -183,12 +183,12 @@ function bootstrap() {
 
 function setup() {
     profiles="$@"
+    print_step "setting up dotfiles"
     ./install_dotfiles.sh
+    print_step "setting up homebrew"
     ./homebrew.sh "$profiles"
-    echo TBD configure macos
-    echo TBD install applications
-
-    print_step "configure applications"
+    print_step "TODO: setting up macos"
+    print_step "setting up applications"
     apps/main.sh
 }
 
