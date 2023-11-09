@@ -14,6 +14,19 @@ install_homebrew() {
     fi
 }
 
+
+use_brewed_bash() {
+    print_step "Using brewed bash"
+    echo -e "\nCurrent shell is: $SHELL"
+    brew_bash="$(brew --prefix)/bin/bash"
+    if [ -f "$brew_bash" ] && [ "$SHELL" != "$brew_bash" ]; then
+        echo "Setting shell to: $brew_bash"
+        sudo chsh -s /opt/homebrew/bin/bash "$USER"
+    fi
+    echo
+}
+
+
 main() {
     profiles="$@"
 
@@ -32,6 +45,9 @@ main() {
         brewfile="profiles/$profile/Brewfile"
         $brew bundle install --no-lock --file "$brewfile"
     done
+
+    use_brewed_bash
+
 }
 
 main "$@"
