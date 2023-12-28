@@ -43,7 +43,7 @@ main() {
     for profile in base $profiles; do
         # print_step "Installing Brewfile from profile \`$profile\`..."
         brewfile="profiles/$profile/Brewfile"
-        $brew bundle install --no-lock --file "$brewfile"
+        $brew bundle install --no-upgrade --no-lock --file "$brewfile"
     done
 
     use_brewed_bash

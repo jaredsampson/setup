@@ -217,6 +217,8 @@ function main() {
         bootstrap
     fi
 
+    check_repo
+
     setup "$profiles"
 }
 
