@@ -653,8 +653,6 @@
 			<integer>80</integer>
 			<key>Command</key>
 			<string>/opt/homebrew/bin/bash</string>
-			<key>Cursor Boost</key>
-			<real>0.0</real>
 			<key>Cursor Color</key>
 			<dict>
 				<key>Blue Component</key>
@@ -1051,7 +1049,7 @@
 				<real>0.0</real>
 			</dict>
 			<key>Minimum Contrast</key>
-			<real>0.30651041666666667</real>
+			<real>0.40000000000000002</real>
 			<key>Mouse Reporting</key>
 			<true/>
 			<key>Name</key>
@@ -1757,7 +1755,7 @@
 				<real>0.0</real>
 			</dict>
 			<key>Minimum Contrast</key>
-			<real>0.29999999999999999</real>
+			<real>0.40000000000000002</real>
 			<key>Mouse Reporting</key>
 			<true/>
 			<key>Name</key>
