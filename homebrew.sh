@@ -21,7 +21,7 @@ use_brewed_bash() {
     brew_bash="$(brew --prefix)/bin/bash"
     if [ -f "$brew_bash" ] && [ "$SHELL" != "$brew_bash" ]; then
         echo "Setting shell to: $brew_bash"
-        sudo chsh -s /opt/homebrew/bin/bash "$USER"
+        sudo chsh -s "$brew_bash" "$USER"
     fi
     echo
 }
