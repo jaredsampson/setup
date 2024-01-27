@@ -1,2 +1,4 @@
+cask "backblaze"
+cask "backblaze-downloader"
 cask "google-chrome"
 cask "focusrite-control"
