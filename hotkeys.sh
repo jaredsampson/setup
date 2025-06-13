@@ -88,6 +88,7 @@ set_hotkeys -g \
     "Select Previous Tab" "${OPTCMD}${LEFTARROW}" \
     "Select Next Tab" "${OPTCMD}${RIGHTARROW}" \
     "Save as PDF" "${CMD}p" \
+    "Save as PDF..." "${CMD}p" \
     "Show Previous Tab" "${OPTCMD}${LEFTARROW}" \
     "Show Next Tab" "${OPTCMD}${RIGHTARROW}"
 
@@ -128,7 +129,8 @@ set_hotkeys com.multimarkdown.nvUltra \
 
 # Pages
 set_hotkeys com.apple.Pages \
-    "Page Break" "${CMD}${RETURN}"
+    "Page Break" "${CMD}${RETURN}" \
+    "Fit Page" "${SHIFTCMD}0"
 
 # Papers
 # set_hotkeys com.mekentosj.papers3 \
@@ -138,7 +140,8 @@ set_hotkeys com.apple.Pages \
 #     "Zoom to Fit" "${CMD}9"
 #     "Export…->BibTeX Library" "${SHIFTCMD}e"
 set_hotkeys com.ReadCube.Papers \
-    "Close Tab" "${CMD}w"
+    "Close Tab" "${CMD}w" \
+    "Papers Settings" "${CMD},"
 
 # Pixelmator (doesn't work)
 #set_hotkeys com.pixelmatorteam.pixelmator \
